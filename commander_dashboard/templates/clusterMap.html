@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Crime Hot Spots</title>
+    </head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+
+        .header {
+            background-color: rgb(93, 108, 248);
+            text-align: center;
+            
+        }
+
+        table {
+            margin: 0 auto; 
+        }
+        .button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: black;
+            background-color: green;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        
+
+        .Navigation {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .error {
+          text-align: center;
+          color: red;
+          font-size: 22px;
+        }
+        .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .navigation input[type="button"] {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        #map {
+            width: 90%;
+            height: 550px;
+
+        }
+    </style>
+    <body bgcolor = #ADD8E6>
+
+        <div class = "header">
+            <br>
+
+            <h1>Crime Hot Spots</h1>
+
+            <br><br>
+            <hr color=#00008B>
+        </div>
+
+        <div class = "Navigation">
+            <BR>
+            <a href = "../"><input type="button" id = "Back" name = "Back" value="Back"></a> <br><br>
+        </div>
+        
+        <div class="container">
+            <div id="map">
+                {{ map_html|safe }}
+            </div>
+        </div>
+
+        
+        
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+        
+
+        
+
+        <div class = "error">
+            <P> </P>
+        </div>
+
+    </body>
+</html>

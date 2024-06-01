@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload CSV File</title>
+    <style>
+        .header {
+            background-color: rgb(93, 108, 248);
+            text-align: center;
+            
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .form {
+          text-align: center;
+        }
+
+        .error {
+          text-align: center;
+          color: red;
+          font-size: 22px;
+        }
+    </style>
+</head>
+<body bgcolor = #ADD8E6>
+
+    <div class = "header">
+        <br>
+
+        <h1>Create Jobs</h1>
+
+        <br><br>
+        <hr color=#00008B>
+    </div>
+
+    <div class = "form">
+        <br>
+
+        <h4>Upload a CSV File containing crime history</h4>
+
+        
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <br><br>
+            <button type="submit">Upload</button>
+        </form>
+        </div>
+        <br>
+
+        <div class = "error">
+            {% if error_message %}
+            <p class="error-message">{{ error_message }}</p>
+            {% endif %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Active Cars</title>
+    </head>
+    <style>
+
+        .header {
+            background-color: rgb(93, 108, 248);
+            text-align: center;
+            
+        }
+        
+        table {
+            margin: 0 auto; 
+        }
+
+        .Navigation {
+            text-align: center;
+            margin-top: 50px;  
+        }
+
+        .error {
+          text-align: center;
+          color: red;
+          font-size: 22px;
+        }
+    </style>
+    <body bgcolor = #ADD8E6>
+
+        <div class = "header">
+            <br>
+
+            <h1>List Of Active Patrol Cars</h1>
+
+            <br><br>
+            <hr color=#00008B>
+        </div>
+
+
+        <div class = "Navigation">
+            {% if is_empty %}
+            <p>All cars are off-duty</p>
+            {% else %}
+            
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Liscence Plate Number</th>
+                        <th>Status</th>
+                        <th>Assigned Job</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for car in cars %}
+                    <tr>
+                        <td>{{ car.Liscence_Plate|default:"-" }}</td>
+                        <td>{{ car.status|default:"-" }}</td>
+                        <td>{{ car.Assigned_Job|default:"-"  }}</td>
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+
+            <br>
+            <br>
+
+
+            <a href = "../"><input type="button" id = "Back" name = "Back" value="Back"></a> <br>
+        </div>
+
+        
+
+        <div class = "error">
+            <P> </P>
+        </div>
+
+    </body>
+</html>

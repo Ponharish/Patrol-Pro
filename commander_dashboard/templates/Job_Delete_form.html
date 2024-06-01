@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Delete Job</title>
+    </head>
+    <style>
+        .header {
+            background-color: rgb(93, 108, 248);
+            text-align: center;
+        }
+        .form {
+          text-align: center;
+        }
+        .error {
+          text-align: center;
+          color: red;
+          font-size: 22px;
+        }
+    </style>
+    <body bgcolor = #ADD8E6>
+        <div class = "header">
+            <br>
+            <h1>Delete Job</h1>
+            <hr color=#00008B>
+        </div>
+
+        
+
+        <div class = "form">
+            <br>
+            <form method = 'post'> 
+                {% csrf_token %}
+                <table cellpadding = 7; align = center>
+                    <tr valign = "middle">
+                        <td align = "right"><label for="JobID">Job ID</label></td>
+                        <td align = "left">{{ form.JobID }}</td> 
+                    </tr>
+
+                </table>
+
+                
+                <br><br>
+                
+                <input type="submit" value="Submit">
+              </form> 
+              <br>
+              
+              <a href = "../"><input type="button" id = "Back" name = "Back" value="Back"></a> <br>
+        </div>
+
+        <div class = "error">
+            {% if form.errors %}
+                    <br>
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <p><font size = 4>{{ error }}</font></p>
+                        {% endfor %}
+                    {% endfor %}
+                
+            {% endif %}
+            
+        </div>
+
+    </body>
+</html>

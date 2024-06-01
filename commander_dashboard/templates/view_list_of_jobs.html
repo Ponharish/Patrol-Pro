@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jobs</title>
+    </head>
+    <style>
+
+        .header {
+            background-color: rgb(93, 108, 248);
+            text-align: center;
+            
+        }
+
+        table {
+            margin: 0 auto; 
+        }
+
+        .Navigation {
+            text-align: center;
+            margin-top: 50px;  
+        }
+
+        .error {
+          text-align: center;
+          color: red;
+          font-size: 22px;
+        }
+    </style>
+    <body bgcolor = #ADD8E6>
+
+        <div class = "header">
+            <br>
+
+            <h1>List Of Jobs</h1>
+
+            <br><br>
+            <hr color=#00008B>
+        </div>
+
+
+        <div class = "Navigation">
+            {% if is_empty %}
+            <p>No Jobs found</p>
+            {% else %}
+            
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Status</th>
+                        <th>License Plate of<br> Patrolling Vehicle</th>
+                        <th>Way Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for job in jobs %}
+                    <tr>
+                        <td>{{ job.id }}</td>
+                        <td>{{ job.status|default:"-" }}</td>
+                        <td>{{ job.Liscence_Plate|default:"-" }}</td>
+                        <td>
+                            {% if job.way_points %}
+                                <ul>
+                                {% for waypoint in job.way_points %}
+                                    <li>{{ waypoint }}</li>
+                                {% endfor %}
+                                </ul>
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+
+            <br>
+            <br>
+
+
+            <a href = "../"><input type="button" id = "Back" name = "Back" value="Back"></a> <br>
+        </div>
+
+        
+
+        <div class = "error">
+            <P> </P>
+        </div>
+
+    </body>
+</html>

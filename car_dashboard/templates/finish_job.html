@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Finish Job</title>
+    </head>
+    <style>
+
+        .header {
+            background-color: rgb(93, 108, 248);
+            text-align: center;
+            
+        }
+
+        table {
+            margin: 0 auto; 
+        }
+        .button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: black;
+            background-color: green;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        
+
+        .Navigation {
+            text-align: center;
+            margin-top: 50px;  
+        }
+
+        .error {
+          text-align: center;
+          color: red;
+          font-size: 22px;
+        }
+    </style>
+    <body bgcolor = #ADD8E6>
+
+        <div class = "header">
+            <br>
+
+            <h1>Finish Job</h1>
+
+            <br><br>
+            <hr color=#00008B>
+        </div>
+
+
+        <div class = "Navigation">
+            
+            
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        
+                        <th>Way Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>{{ jobid }}</td>
+                        
+                        <td>
+                            {% if waypoints %}
+                                <ul>
+                                {% for waypoint in waypoints %}
+                                    <li>{{ waypoint }}</li>
+                                {% endfor %}
+                                </ul>
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            
+
+            <br>
+            <br>
+
+            <a href="{% url 'Finish_Job_success' %}" class="button-link">Finish Job</a>
+            <br>
+            <a href = "../"><input type="button" id = "Back" name = "Back" value="Back"></a> <br>
+        </div>
+
+        
+
+        <div class = "error">
+            <P> </P>
+        </div>
+
+    </body>
+</html>

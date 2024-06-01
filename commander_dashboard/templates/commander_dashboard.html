@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard</title>
+    </head>
+    <style>
+
+        .header {
+            background-color: rgb(93, 108, 248);
+            
+        }
+        .header img {
+            float: left;
+            vertical-align: middle;
+            width: 150px;
+            height: 100px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .button1 {     
+            background-color: #f0a61e; 
+            border: none; 
+            border-radius: 60px; 
+            cursor: pointer; 
+            display: inline-block;
+            width: 450px;
+            height: 120px; 
+            font-size: 18px;
+            line-height: 50px;
+            
+        }
+
+        .Navigation {
+            text-align: center;
+            margin-top: 50px;  
+        }
+        .Time {
+            position: absolute;
+            right: 0;
+            top : 0;
+            width: 450px; /* Adjust the width as needed */
+            padding: 10px;
+            text-align: right;
+        }
+        .wether-content {
+            text-align: center;
+        }
+        table {
+            margin: 0 auto; 
+        }
+
+        .error {
+          text-align: center;
+          color: red;
+          font-size: 22px;
+        }
+    </style>
+    <body bgcolor = #ADD8E6>
+
+        <div class = "header">
+            <br>
+            
+            <img src = "{% static 'logo.png' %}" alt = "logo" />
+            <h1>Welcome {{ first_name }}</h1>
+
+            <br><br>
+            <hr color=#00008B>
+        </div>
+
+        <div class = "Time">
+            <p><font size = 4><b>Current Date and Time : </b>{{ current_time }}</font></p>
+            <p></p>
+        </div>
+
+        <div class = "Navigation">
+            <br>
+            <a href = 'list_of_jobs'><button class="button button1"type="button" autofocus><h2> View List of Jobs </h2></button></a>
+            <br><br>
+            <a href = 'list_of_cars'><button class="button button1"type="button" autofocus><h2> View List of Active Patrol Cars </h2></button></a>
+            <br><br>
+            <a href = 'create_jobs_error'><button class="button button1"type="button" autofocus><h2> Create Jobs </h2></button></a>
+            <br><br>
+            <a href = 'assign_jobs'><button class="button button1"type="button" autofocus><h2> Assign Jobs </h2></button></a>
+            <br><br>
+            <a href = 'delete_jobs'><button class="button button1"type="button" autofocus><h2> Delete Jobs </h2></button></a>
+            <br><br>
+            <a href = 'view_crime_hotspots'><button class="button button1"type="button" autofocus><h2> View Crime Hot Spots </h2></button></a>
+            <br><br>
+            <a href = 'view_crime_hotspots_graph'><button class="button button1"type="button" autofocus><h2> View Crime Hot Spots Graph </h2></button></a>
+            <br><br>
+            <a href = 'Logout'><button class="button button1"type="button" autofocus><h2> Logout </h2></button></a>
+            
+            
+        </div>
+
+        <div class="wether-content">
+            <br><br>
+            <table border = 1>
+                <thead>
+                    <tr>
+                        <th colspan="2"><h2>Weather in Chicago</h2></th>
+                        
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>Weather Description</td>
+                        <td>{{ weather_data.hourly.weathercode.0 }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Temperature</td>
+                        <td>{{ weather_data.hourly.temperature_2m.0 }} °C</td>
+                    </tr>
+                    <tr>
+                        <td>Humidity</td>
+                        <td>{{ weather_data.hourly.relative_humidity_2m.0 }}%</td>
+                    </tr>
+                    <tr>
+                        <td>Wind Speed</td>
+                        <td>{{ weather_data.hourly.windspeed_10m.0 }} m/s</td>
+                    </tr>
+                    <tr>
+                        <td>UV Index</td>
+                        <td>{{ weather_data.hourly.uv_index_clear_sky.0 }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            
+        </div>
+
+        
+
+        <div class = "error">
+            <P> </P>
+        </div>
+
+    </body>
+</html>
