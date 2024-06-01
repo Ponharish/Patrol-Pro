@@ -54,7 +54,9 @@ def car_logout(request):
         if car.status != "Free":
             return redirect('logout_error')
         try:
-            job = jobs.objects.get(Liscence_Plate =Vehicle_Number)
+            job = jobs.objects.get(Q(Liscence_Plate=Vehicle_Number) & 
+    (Q(status="Assigned") | Q(status="Patrolling")| Q(status="Created"))
+    )
         
             if job.status == "Assigned":
                 job.status = "Created"
