@@ -37,3 +37,5 @@ to run the program
 
 Use the link provided and open it on browser
 The demo is given in the video
+
+for the data, you could use the sample data provided in sample data directory, then unzip the csv file and use it
